@@ -47,6 +47,9 @@ class MultiVideoCapture:
                 else:
                     self.background[self.grid_height:, self.grid_width*(row-2):self.grid_width*(row-2+1)] = self.threads[i].frame
                     row += 1
+                ## Code insert model
+                    self.threas[i].frame
+                ##
                 self.threads[i].run()
 
             cv2.imshow('Multi-Video Capture', self.background)
@@ -58,6 +61,6 @@ class MultiVideoCapture:
             self.threads.video.release()
         cv2.destroyAllWindows()
 
-multi_video_capture = MultiVideoCapture(800, 600, 'video.mp4', 'video.mp4', 'video.mp4', 0)
+multi_video_capture = MultiVideoCapture(800, 600, './data/1.mp4', './data/2.mp4', './data/3.mp4', './data/4.mp4')
 multi_video_capture.start()
 multi_video_capture.display()
