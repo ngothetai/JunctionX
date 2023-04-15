@@ -7,6 +7,7 @@ import torch
 from kornia_moons.feature import *
 
 matcher = KF.LoFTR(pretrained='indoor_new')
+
 def load_torch_image(fname):
     img = K.image_to_tensor(fname, False).float() /255.
     img = K.color.bgr_to_rgb(img)
@@ -21,12 +22,9 @@ while True:
 
     ret1, frame1 = cam1.read()
     ret2, frame2 = cam2.read()
-    
-    fname1 = frame1
-    fname2 = frame2
 
-    img1 = K.geometry.resize(load_torch_image(fname1), (480, 640), antialias=True)
-    img2 = K.geometry.resize(load_torch_image(fname2), (480, 640), antialias=True)
+    img1 = K.geometry.resize(load_torch_image(frame1), (480, 640), antialias=True)
+    img2 = K.geometry.resize(load_torch_image(frame2), (480, 640), antialias=True)
 
 
     matcher = KF.LoFTR(pretrained='indoor_new')
